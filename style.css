@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  font-size: 18px;
+}
+body {
+  background-color: #0b0c1d;
+  font-size: 21px;
+}
+#search-box {
+  width: 300px;
+  border-color: rgb(13, 94, 17);
+  border-radius: 5px;
+  padding: 10px;
+  height: 40px;
+}
+#btn {
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: darkgreen;
+}
+#btn:active {
+  border-color: red;
+}
