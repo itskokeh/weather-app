@@ -1,11 +1,11 @@
 let key = 'London'
 
-function constructURL(key) {
+function construstURL(key) {
   return `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${key}?unitGroup=us&key=S3FES2J7E7CP6FCPAVZ3S96FZ&contentType=json`
 }
 
 async function getWeatherInfo() {
-  const url = constructURL(key)
+  const url = construstURL(key)
   try {
     const response = await fetch(url)
     const jsonData = await response.json()
@@ -54,6 +54,6 @@ searchBox.addEventListener('keypress', (event) => {
     handleSearch()
   }
 })
-btn.addEventListener('click', handleSearchc
+btn.addEventListener('click', handleSearch)
 
 storeWeatherData()
