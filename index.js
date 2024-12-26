@@ -54,8 +54,8 @@ async function storeWeatherData(location) {
     elements.feelLike.textContent = `${weatherData?.currentConditions?.feelslike}°C` || '- -'
 
     const addressParts = weatherData?.resolvedAddress?.split(',').map(part => part.trim()) || [];
-    const cityName = addressParts[0] || '- -';
-    const countryName = addressParts[1] || '- -';
+    const cityName = addressParts[0] || '';
+    const countryName = addressParts[1] || '';
     elements.city.textContent = cityName;
     elements.country.textContent = countryName;
     
@@ -101,15 +101,6 @@ searchBox.addEventListener('keypress', (event) => {
 })
 btn.addEventListener('click', handleSearch)
 document.querySelector('.notification-close').addEventListener('click', hideNotification);
-
-
-function formatCityName(cityName) {
-  return cityName
-      .toLowerCase()
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-}
 
 function getWeatherEmoji(iconName) {
   const iconMap = {
@@ -171,7 +162,6 @@ function hideNotification() {
       notification.style.animation = '';
   }, 300);
 }
-
 
 showLoading()
 storeWeatherData('London').finally(hideLoading)
