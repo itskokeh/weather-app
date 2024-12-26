@@ -15,7 +15,7 @@ function constructURL(location) {
 async function getWeatherInfo(location) {
   const url = constructURL(location)
   try {
-    const response = await fetch(url)
+    const response = await fetch(url, {mode:"cors"})
     if (!response.ok) {
       if (response.status === 404) {
           showNotification('Location not found. Please check the city name.', 'warning');
@@ -25,7 +25,7 @@ async function getWeatherInfo(location) {
       return null;
     }
     const jsonData = await response.json()
-    // console.log(jsonData)
+    console.log(jsonData)
     return jsonData
   } catch (error) {
     showNotification('Network error. Please check your connection.', 'error');
@@ -77,7 +77,6 @@ async function handleSearch() {
   if (userInput) {
     showLoading()
     try {
-      const formattedInput = formatCityName(userInput)
       await storeWeatherData(userInput)
     } catch (error) {
       showNotification('Failed to fetch weather data. Please try again.', 'error')
